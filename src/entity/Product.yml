@@ -1,0 +1,40 @@
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - description
+        - price
+        - quantity
+      properties:
+        id:
+          type: number
+          description: ID único do produto.
+        description:
+          type: string
+          description: Descrição do produto.
+        price:
+          type: number
+          description: Preço do produto.
+        quantity:
+          type: number
+          description: Quantidade em estoque.
+
+paths:
+  /products:
+    post:
+      summary: Cadastra um novo produto
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: Produto cadastrado com sucesso
+        '400':
+          description: Entrada inválida
+  
